@@ -13,6 +13,7 @@ input {
     height: 40px;
     margin-top: 8px;
     margin-bottom: 8px;
+    outline: transparent;
 }
 
 textarea {
@@ -23,6 +24,7 @@ textarea {
     resize: none;
     margin-top: 8px;
     margin-bottom: 16px;
+    outline: transparent;
 }
 
 button {
@@ -56,6 +58,5 @@ textarea:focus {
 
 input:active,
 textarea:active {
-    outline: none;
     border: 1px solid #808080;
 }
