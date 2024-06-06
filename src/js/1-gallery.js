@@ -1,5 +1,5 @@
-// import SimpleLightbox from "simplelightbox";
-// import '/simplelightbox/dist/simple-lightbox.min.css';
+import SimpleLightbox from "simplelightbox";
+import '/simplelightbox/dist/simple-lightbox.min.css';
 
 const images = [
 {
@@ -105,11 +105,3 @@ function showModal(image) {
     const instance = SimpleLightbox.create(markup);
     instance.show();
 }
-
-
-// Описаний в документації
-import SimpleLightbox from "simplelightbox";
-// Додатковий імпорт стилів
-import "simplelightbox/dist/simple-lightbox.min.css";
-
-// console.log(simpleLightbox);
