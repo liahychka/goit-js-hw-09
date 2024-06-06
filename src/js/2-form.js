@@ -34,10 +34,11 @@ function loadFromLS(key) {
 
 function validateForm() {
     if (textarea2.value === '' || input.value === '' ) {
-        console.log('Please fill in all fields of the form');;
         return false;
+    } else {
+        return true;
     }
-    return true;
+    
 }
 
 form.addEventListener('submit', (e) => {
