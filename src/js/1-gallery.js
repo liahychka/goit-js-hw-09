@@ -1,5 +1,5 @@
 import SimpleLightbox from "simplelightbox";
-import '/simplelightbox/dist/simple-lightbox.min.css';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const images = [
 {
@@ -105,3 +105,5 @@ function showModal(image) {
     const instance = SimpleLightbox.create(markup);
     instance.show();
 }
+
+console.log(SimpleLightbox);
