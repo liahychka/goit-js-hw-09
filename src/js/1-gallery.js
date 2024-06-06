@@ -72,10 +72,15 @@ const container = document.querySelector('.gallery');
 
 function productTemplate(image) {
     return `<li class="gallery-item">
-            <a class="gallery-link" href="${image.original}">
-                <img class="gallery-image" src="${image.preview}" data-source="${image.original}" alt="${image.description}" />
-            </a>
-            </li>`
+	<a class="gallery-link" href="${image.original}">
+		<img 
+			class="gallery-image" 
+			src="${image.preview}" 
+			alt="${image.description}" 
+			/>
+	</a>
+</li>
+`
 }
 
 function productsTemplate(arr) {
@@ -83,27 +88,5 @@ function productsTemplate(arr) {
 }
 
 const markup = productsTemplate(images);
-
 container.innerHTML = markup;
-
-container.addEventListener('click', e => {
-    e.preventDefault();
-    if (e.target === e.currentTarget) return;
-    const liElem = e.target.closest('li');
-    console.log(liElem);
-
-    const image = images.find(img => img.original === e.target.getAttribute('data-source'));
-    showModal(image);
-});
-
-function showModal(image) {
-    const markup = `<li class="gallery-item">
-            <a class="gallery-link" href="${image.original}">
-                <img class="gallery-image" src="${image.preview}" data-source="${image.original}" alt="${image.description}" />
-            </a>
-            </li>`;
-    const instance = SimpleLightbox.create(markup);
-    instance.show();
-}
-
-console.log(SimpleLightbox);
+const instance = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
