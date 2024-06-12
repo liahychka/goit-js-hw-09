@@ -1,10 +1,9 @@
-const STORAGE_KEY = 'feedback-msg';
+const STORAGE_KEY = 'feedback-form-state';
 
 const form = document.querySelector('.feedback-form');
 const textarea = form.querySelector('textarea');
 const input = form.querySelector('input');
 const textarea2 = document.querySelector('textarea');
-
 
 form.addEventListener('input', () => {
     const formData = new FormData(form);
@@ -12,9 +11,7 @@ form.addEventListener('input', () => {
     const message = formData.get('message');
     const data = { email, message }; 
 
-    saveToLS('email', email);
-    saveToLS('message', message);
-    saveToLS('userData', data);
+    saveToLS(STORAGE_KEY, data);
 }); 
 
 function saveToLS(key, value) {
@@ -33,12 +30,11 @@ function loadFromLS(key) {
 }  
 
 function validateForm() {
-    if (textarea2.value === '' || input.value === '' ) {
+    if (textarea2.value === '' || input.value === '') {
         return false;
     } else {
         return true;
     }
-    
 }
 
 form.addEventListener('submit', (e) => {
@@ -51,19 +47,18 @@ form.addEventListener('submit', (e) => {
     console.log(data);
 
     form.reset();
-    localStorage.removeItem('email');
-    localStorage.removeItem('message');
-    localStorage.removeItem('userData');
+    localStorage.removeItem('feedback-form-state');
 
-    if (!validateForm()) {
+       if (!validateForm()) {
         e.preventDefault();
     }
+
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-    const email = loadFromLS('email');
-    const message = loadFromLS('message');
-
-    form.elements.email.value = email;
-    form.elements.message.value = message;
+ const data = loadFromLS(STORAGE_KEY);
+    if (data) {
+        form.elements.email.value = data.email;
+        form.elements.message.value = data.message;
+    }
 });
